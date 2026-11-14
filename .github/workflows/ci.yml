@@ -1,0 +1,48 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: answerloop
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: answerloop_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U answerloop -d answerloop_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      RAILS_ENV: test
+      CI: "true"
+      DATABASE_URL: postgres://answerloop:test_password@localhost:5432/answerloop_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: .ruby-version
+          bundler-cache: true
+      - name: Prepare test database
+        run: bin/rails db:prepare
+      - name: Build Tailwind CSS
+        run: bin/rails tailwindcss:build
+      - name: Check Rails autoloading
+        run: bin/rails zeitwerk:check
+      - name: Run RSpec tests
+        run: bundle exec rspec
+      - name: Scan Rails code for security issues
+        run: bundle exec brakeman --no-pager -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run JavaScript unit tests
+        run: npm run test:js

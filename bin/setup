@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+bundle install
+bin/rails db:prepare
+bin/rails tailwindcss:build
+printf '\nReady. Start with: bin/rails server\n'

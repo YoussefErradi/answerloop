@@ -1,0 +1,18 @@
+<% content_for :title, "Categories · #{current_workspace.name}" %>
+<section class="hero"><span class="eyebrow">Knowledge base</span><h1>Categories</h1><p>Group articles so customers can find answers quickly.</p></section>
+<p><%= link_to "← Articles", workspace_articles_path(current_workspace.slug) %></p>
+<div class="grid">
+  <section class="card"><h2>All categories</h2>
+    <% if @categories.any? %>
+      <ul class="simple-list"><% @categories.each do |category| %><li><span><strong><%= category.name %></strong> <span class="tiny"><%= @article_counts[category.id] || 0 %> articles</span></span><% if policy(category).destroy? %><%= button_to "Remove", workspace_category_path(current_workspace.slug, category), method: :delete, class: "button-link", data: { turbo_confirm: "Remove this category? Articles will remain uncategorized." } %><% end %></li><% end %></ul>
+    <% else %><p>No categories yet.</p><% end %>
+  </section>
+  <% if policy(@category).create? %><section class="card"><h2>Add a category</h2>
+    <%= form_with model: @category, url: workspace_categories_path(current_workspace.slug) do |form| %>
+      <% if @category.errors.any? %><div class="errors"><%= @category.errors.full_messages.to_sentence %></div><% end %>
+      <div class="field"><%= form.label :name %><%= form.text_field :name, required: true, maxlength: 80 %></div>
+      <div class="field"><%= form.label :position, "Order" %><%= form.number_field :position, min: 0 %></div>
+      <%= form.submit "Create category", class: "button" %>
+    <% end %>
+  </section><% end %>
+</div>

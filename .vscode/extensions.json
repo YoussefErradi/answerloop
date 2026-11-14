@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "Shopify.ruby-lsp",
+    "x-ror.ruby-templates",
+    "bradlc.vscode-tailwindcss",
+    "ms-azuretools.vscode-containers",
+    "ms-ossdata.vscode-pgsql"
+  ]
+}

@@ -1,0 +1,13 @@
+<% content_for :title, "Invite a member · AnswerLoop" %>
+<section class="card narrow" style="margin:auto">
+  <span class="eyebrow"><%= current_workspace.name %></span>
+  <h2>Invite a team member</h2>
+  <p>Only owners and admins can send invitations. Invited members cannot gain owner privileges.</p>
+  <% if @invitation.errors.any? %><div class="errors" role="alert"><ul><% @invitation.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
+  <%= form_with model: @invitation, url: workspace_invitations_path(current_workspace.slug) do |form| %>
+    <div class="field"><%= form.label :email %><%= form.email_field :email, required: true, autocomplete: "email", autofocus: true %></div>
+    <div class="field"><%= form.label :role %><%= form.select :role, options_for_select([["Support agent", "agent"], ["Editor", "editor"], ["Admin", "admin"]], @invitation.role), {}, required: true %></div>
+    <%= form.submit "Send invitation", class: "button" %>
+  <% end %>
+  <p class="tiny">In development, email is written to tmp/mail/ rather than sent externally.</p>
+</section>

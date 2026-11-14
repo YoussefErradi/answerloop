@@ -1,0 +1,7 @@
+<% content_for :title, "Articles · #{current_workspace.name}" %>
+<section class="hero"><span class="eyebrow">Knowledge base</span><h1>Articles</h1><p>Write clear answers and publish them to your public help center.</p></section>
+<div class="row page-actions"><span><%= link_to "← Workspace", workspace_path(current_workspace.slug) %> · <%= link_to "View public portal", help_path(current_workspace.slug) %> · <%= link_to "Categories", workspace_categories_path(current_workspace.slug) %></span><% if policy(Article.new(workspace: current_workspace)).create? %><%= link_to "+ New article", new_workspace_article_path(current_workspace.slug), class: "button" %><% end %></div>
+<section class="card">
+  <% if @articles.any? %><div class="article-list"><% @articles.each do |article| %><article class="article-list-item"><div><span class="badge"><%= article.status.humanize %></span><h2><%= link_to article.title, workspace_article_path(current_workspace.slug, article) %></h2><p><%= article.summary.presence || article.body.to_plain_text.to_s.truncate(160) %></p><small><%= article.category&.name || "Uncategorized" %> · Updated <%= l(article.updated_at, format: :short) %></small></div><%= link_to "Open →", workspace_article_path(current_workspace.slug, article) %></article><% end %></div>
+  <% else %><p>No articles yet. Create the first answer for your team.</p><% end %>
+</section>

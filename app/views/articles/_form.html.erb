@@ -1,0 +1,11 @@
+<%= form_with model: @article, url: @article.persisted? ? workspace_article_path(current_workspace.slug, @article) : workspace_articles_path(current_workspace.slug) do |form| %>
+  <% if @article.errors.any? %><div class="errors"><%= @article.errors.full_messages.to_sentence %></div><% end %>
+  <div class="field"><%= form.label :title %><%= form.text_field :title, required: true, maxlength: 180 %></div>
+  <div class="field"><%= form.label :summary %><%= form.text_area :summary, rows: 2, maxlength: 500, placeholder: "A short description for article lists" %></div>
+  <div class="field"><%= form.label :category_id, "Category" %><%= form.collection_select :category_id, current_workspace.categories.order(:position, :name), :id, :name, include_blank: "Uncategorized" %></div>
+  <div class="field"><%= form.label :body, "Article content" %><%= form.rich_text_area :body %></div>
+  <div class="field"><%= form.label :status %><%= form.select :status, Article.statuses.keys.map { |status| [status.humanize, status] } %><small>Published articles appear in the public help center.</small></div>
+  <%= form.submit @article.persisted? ? "Save changes" : "Create article", class: "button" %>
+  <% if @article.persisted? %><%= link_to "Preview saved version", preview_workspace_article_path(current_workspace.slug, @article), class: "button secondary" %><% end %>
+  <%= link_to "Cancel", workspace_articles_path(current_workspace.slug), class: "button secondary" %>
+<% end %>

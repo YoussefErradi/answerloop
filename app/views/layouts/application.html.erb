@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= content_for(:title) || "AnswerLoop" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Give customers a place to find answers and your team one inbox to handle the rest. AnswerLoop brings help articles, support tickets, and clear ownership together for your business.">
+    <meta name="theme-color" content="#ffffff">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header class="navbar">
+      <%= link_to root_path, class: "brand", aria: { label: "AnswerLoop home" } do %><span class="brand-mark" aria-hidden="true"><span></span><span></span></span>Answer<span class="brand-dot">Loop</span><% end %>
+      <nav class="nav-links" aria-label="Main navigation">
+        <% if authenticated? %>
+          <%= link_to "My workspaces", workspaces_path %>
+          <%= link_to "New workspace", new_workspace_path %>
+          <%= button_to "Sign out", session_path, method: :delete, class: "button-link" %>
+        <% else %>
+          <%= link_to "Why AnswerLoop", root_path(anchor: "why"), class: "nav-section-link" %>
+          <%= link_to "How it works", root_path(anchor: "how"), class: "nav-section-link" %>
+          <%= link_to "About", root_path(anchor: "about"), class: "nav-section-link" %>
+          <%= link_to "Contact", root_path(anchor: "contact"), class: "nav-section-link" %>
+          <%= link_to "Sign in", new_session_path %>
+          <%= link_to "Get started", new_registration_path, class: "button" %>
+        <% end %>
+      </nav>
+    </header>
+    <main class="<%= content_for?(:full_width) ? 'landing-main' : 'container' %>">
+      <% if flash[:notice] %><p class="notice" role="status"><%= flash[:notice] %></p><% end %>
+      <% if flash[:alert] %><p class="alert" role="alert"><%= flash[:alert] %></p><% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

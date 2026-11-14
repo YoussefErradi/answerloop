@@ -1,0 +1,6 @@
+A new support ticket #<%= @ticket.id %> was submitted in <%= @ticket.workspace.name %>.
+
+Subject: <%= @ticket.subject %>
+Customer: <%= @ticket.customer_contact.name %> <<%= @ticket.customer_contact.email %>>
+
+Open it: <%= @url %>

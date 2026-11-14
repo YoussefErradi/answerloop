@@ -1,0 +1,5 @@
+<% content_for :title, "Ticket ##{@ticket.id} · #{@workspace.name}" %>
+<p><%= link_to "← Help center", help_path(@workspace.slug) %></p>
+<section class="hero"><span class="eyebrow">Support ticket #<%= @ticket.id %></span><h1><%= @ticket.subject %></h1><p>Status: <strong><%= @ticket.status.humanize %></strong></p></section>
+<section class="card"><h2>Conversation</h2><div class="conversation"><% @messages.each do |message| %><article class="conversation-message"><strong><%= message.author ? "Support team" : @ticket.customer_contact.name %></strong><span class="tiny"><%= l(message.created_at, format: :short) %></span><p><%= simple_format(message.body) %></p></article><% end %></div></section>
+<section class="card help-recent"><h2>Reply</h2><%= form_with url: help_ticket_replies_path(@workspace.slug, @ticket), scope: :ticket_message do |form| %><% if @message&.errors&.any? %><div class="errors"><%= @message.errors.full_messages.to_sentence %></div><% end %><div class="field"><%= form.label :body, "Your message" %><%= form.text_area :body, rows: 5, required: true, maxlength: 20000 %></div><%= form.submit "Send reply", class: "button" %><% end %></section>

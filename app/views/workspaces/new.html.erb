@@ -1,0 +1,12 @@
+<% content_for :title, "New workspace · AnswerLoop" %>
+<section class="card narrow" style="margin:auto">
+  <span class="eyebrow">Workspace setup</span>
+  <h2>Create a workspace</h2>
+  <p>Each workspace separates your team's data and membership.</p>
+  <% if @workspace.errors.any? %><div class="errors" role="alert"><ul><% @workspace.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
+  <%= form_with model: @workspace, data: { controller: "slug-preview" } do |form| %>
+    <div class="field"><%= form.label :name, "Workspace name" %><%= form.text_field :name, required: true, autofocus: true, maxlength: 100, placeholder: "e.g. Acme Support", data: { slug_preview_target: "name", action: "input->slug-preview#update" } %></div>
+    <p class="tiny">Workspace URL preview: <strong data-slug-preview-target="preview">your-workspace</strong>-XXXXXXXX</p>
+    <%= form.submit "Create workspace", class: "button" %>
+  <% end %>
+</section>

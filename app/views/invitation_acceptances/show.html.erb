@@ -1,0 +1,8 @@
+<% content_for :title, "Accept invitation · AnswerLoop" %>
+<section class="card narrow" style="margin:auto">
+  <span class="eyebrow">Invitation</span>
+  <h2>Join <%= @invitation.workspace.name %></h2>
+  <p>You have been invited as <strong><%= @invitation.role.humanize %></strong>.</p>
+  <p class="tiny">Signed in as <%= current_user.email_address %></p>
+  <%= button_to "Accept invitation", accept_invitation_path(token: params[:token]), method: :post, class: "button" %>
+</section>

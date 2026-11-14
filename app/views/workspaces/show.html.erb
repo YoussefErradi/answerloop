@@ -1,0 +1,17 @@
+<% content_for :title, "#{current_workspace.name} · AnswerLoop" %>
+<section class="hero">
+  <span class="eyebrow">Workspace</span>
+  <h1><%= current_workspace.name %></h1>
+  <p>Publish answers, help customers, and follow your support work.</p>
+</section>
+<div class="grid">
+  <section class="card"><div class="row"><h2>Your role</h2><span class="badge"><%= current_membership.role.humanize %></span></div><p>Permissions are enforced by Rails policies for each workspace.</p></section>
+  <section class="card"><h2>Team</h2><p><%= current_workspace.memberships.count %> active member(s).</p>
+    <% if policy(current_workspace).manage_members? %>
+      <%= link_to "Manage team →", workspace_memberships_path(current_workspace.slug) %>
+    <% else %><span class="tiny">Team management requires admin access.</span><% end %>
+  </section>
+  <section class="card"><h2>Knowledge base</h2><p><%= current_workspace.articles.published.count %> published articles.</p><%= link_to "Manage articles →", workspace_articles_path(current_workspace.slug) %><br><%= link_to "View help center →", help_path(current_workspace.slug) %></section>
+  <% if policy(Ticket.new(workspace: current_workspace)).index? %><section class="card"><h2>Support inbox</h2><p><%= current_workspace.tickets.open.count %> open tickets.</p><%= link_to "Open inbox →", workspace_tickets_path(current_workspace.slug) %></section><% end %>
+  <% if AnalyticsPolicy.new(current_user, current_workspace).show? %><section class="card"><h2>Analytics</h2><p>Article, ticket, and search activity.</p><%= link_to "View analytics →", workspace_analytics_path(current_workspace.slug) %></section><% end %>
+</div>

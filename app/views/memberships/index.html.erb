@@ -1,0 +1,8 @@
+<% content_for :title, "Team · #{current_workspace.name}" %>
+<div class="row" style="margin-bottom:20px"><div><span class="eyebrow"><%= current_workspace.name %></span><h1>Team members</h1></div><%= link_to "+ Invite member", new_workspace_invitation_path(current_workspace.slug), class: "button" %></div>
+<section class="card">
+  <table class="table"><thead><tr><th>Email</th><th>Role</th><th>Joined</th></tr></thead><tbody>
+  <% @memberships.each do |membership| %><tr><td><%= membership.user.email_address %></td><td><span class="badge"><%= membership.role.humanize %></span></td><td><%= membership.created_at.to_date %></td></tr><% end %>
+  </tbody></table>
+</section>
+<p><%= link_to "← Back to workspace", workspace_path(current_workspace.slug) %></p>

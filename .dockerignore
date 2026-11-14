@@ -1,0 +1,16 @@
+.git
+.bundle
+log/*
+tmp/*
+storage/*
+coverage
+vendor/bundle
+node_modules
+.DS_Store
+.env
+.env.*
+!.env.example
+config/master.key
+config/credentials/*.key
+__pycache__
+*.pyc

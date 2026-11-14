@@ -1,0 +1,4 @@
+<% content_for :title, "#{@article.title} · #{@workspace.name}" %>
+<p><%= link_to "← Help center", help_path(@workspace.slug) %></p>
+<article class="card article-detail"><span class="eyebrow"><%= @article.category&.name || "Help article" %></span><h1><%= @article.title %></h1><% if @article.summary.present? %><p class="article-summary"><%= @article.summary %></p><% end %><div class="trix-content"><%= @article.body %></div><p class="tiny">Updated <%= l(@article.updated_at, format: :long) %></p></article>
+<section class="card help-recent"><h2>Need more help?</h2><p>Send a request to the support team.</p><%= link_to "Contact support", new_help_ticket_path(@workspace.slug), class: "button" %></section>

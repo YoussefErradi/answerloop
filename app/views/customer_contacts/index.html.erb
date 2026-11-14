@@ -1,0 +1,4 @@
+<% content_for :title, "Contacts · #{current_workspace.name}" %>
+<section class="hero"><span class="eyebrow">Support</span><h1>Customer contacts</h1><p>People who have contacted your support team.</p></section>
+<div class="row page-actions"><%= link_to "← Inbox", workspace_tickets_path(current_workspace.slug) %><%= link_to "+ New ticket", new_workspace_ticket_path(current_workspace.slug), class: "button" %></div>
+<section class="card"><% if @contacts.any? %><ul class="simple-list"><% @contacts.each do |contact| %><li><span><strong><%= link_to contact.name, workspace_customer_contact_path(current_workspace.slug, contact) %></strong><br><span class="tiny"><%= contact.email %></span></span><span class="badge"><%= pluralize(@ticket_counts[contact.id] || 0, "ticket") %></span></li><% end %></ul><% else %><p>No customer contacts yet.</p><% end %></section>

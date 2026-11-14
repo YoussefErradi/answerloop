@@ -1,0 +1,192 @@
+<% content_for :title, "AnswerLoop · A help center and shared inbox for your business" %>
+<% content_for :full_width, true %>
+
+<div class="landing">
+  <section class="landing-hero landing-shell" aria-labelledby="landing-title">
+    <div class="landing-hero-copy">
+      <span class="landing-kicker"><span class="landing-kicker-dot" aria-hidden="true"></span> Help center + shared support inbox</span>
+      <h1 id="landing-title">Fewer repeat questions.<br><em>More time to help.</em></h1>
+      <p class="landing-lead">Give customers a place to find answers and your team one inbox to handle the rest. AnswerLoop helps your business organize customer support, from first question to final reply.</p>
+      <div class="landing-actions">
+        <%= link_to "Set up your help desk", new_registration_path, class: "button landing-primary" %>
+        <%= link_to "See it in action · 40 sec", root_path(anchor: "story"), class: "landing-text-link" %>
+      </div>
+      <ul class="landing-hero-benefits" aria-label="What your business can do"><li>Publish helpful guides</li><li>Assign every request</li><li>Reply as a team</li></ul>
+      <p class="landing-helper">For small businesses and growing support teams.</p>
+    </div>
+
+    <figure class="support-preview" aria-label="Example of a customer finding a help article and a team handling a support ticket">
+      <div class="support-preview-glow" aria-hidden="true"></div>
+      <div class="support-help-card">
+        <div class="support-card-label"><span class="support-symbol" aria-hidden="true">↗</span><span>FOR YOUR CUSTOMERS</span></div>
+        <h2>Answers, a search away.</h2>
+        <div class="support-search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>How do I return an item?</span></div>
+        <div class="support-article"><span class="support-doc-icon" aria-hidden="true">≡</span><span><strong>Returns &amp; exchanges</strong><small>A step-by-step guide for your customers</small></span><span aria-hidden="true">↗</span></div>
+      </div>
+      <div class="support-inbox-card">
+        <div class="support-inbox-bar"><span class="support-mini-brand">a<span>l</span></span><strong>Sunday Studio</strong><span class="support-example">Example workspace</span></div>
+        <div class="support-inbox-body">
+          <div class="support-inbox-heading"><div><span class="support-card-label">FOR YOUR TEAM</span><h2>One inbox. Clear ownership.</h2></div><span class="support-ticket-status">Open</span></div>
+          <div class="support-ticket-title"><strong>Delivery address update</strong><span>#1042</span></div>
+          <div class="support-message"><span class="support-avatar">M</span><div><strong>Maya <span>Customer</span></strong><p>I’ve moved. Can you update my delivery address?</p></div></div>
+          <div class="support-assignment"><span class="support-assignment-dot" aria-hidden="true"></span>Assigned to Leo<span>Everyone knows who’s on it.</span></div>
+          <div class="support-message support-reply"><span class="support-avatar">L</span><div><strong>Leo <span>Support team</span></strong><p>Thanks, Maya. I’m checking with our dispatch team.</p></div></div>
+        </div>
+      </div>
+      <figcaption><span aria-hidden="true">✓</span> Customers find answers. Your team handles the rest.</figcaption>
+    </figure>
+  </section>
+
+  <div class="landing-ribbon">
+    <div class="landing-shell landing-ribbon-inner">
+      <span>A simpler support day</span><span>Help customers help themselves</span><span>Give every request an owner</span><span>Keep conversations moving</span>
+    </div>
+  </div>
+
+  <section class="landing-section landing-shell" id="why" aria-labelledby="why-title">
+    <div class="landing-section-head">
+      <div><span class="landing-overline">WHY ANSWERLOOP</span><h2 id="why-title">Give your customers answers.<br>Give your team a clear next step.</h2></div>
+      <p>Repeated questions take time. Unassigned requests get overlooked. Give your business a simple way to handle both.</p>
+    </div>
+    <div class="landing-feature-grid">
+      <article class="landing-feature"><span class="landing-feature-icon mint" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 5h9a4 4 0 0 1 4 4v19a5 5 0 0 0-5-4H5V5Zm22 0h-5a4 4 0 0 0-4 4v19a5 5 0 0 1 5-4h4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><h3>Answer it once. Help again and again.</h3><p>Publish guides for returns, billing, setup, and more. Customers can search your help center whenever they need an answer.</p><span class="landing-feature-label">Your public help center</span></article>
+      <article class="landing-feature"><span class="landing-feature-icon peach" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="21" rx="4" stroke="currentColor" stroke-width="2"/><path d="M4 18h7l3 4h4l3-4h7M11 12h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Know who’s handling every request.</h3><p>Bring customer requests into one shared inbox. Assign an owner, set a priority, and track each ticket through to resolution.</p><span class="landing-feature-label">Your shared support inbox</span></article>
+      <article class="landing-feature"><span class="landing-feature-icon blue" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 25V14m10 11V6m10 19v-9M3 28h26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><h3>See where customers need more help.</h3><p>Review popular searches, searches with no results, and ticket activity. Use real questions to make your next guide more useful.</p><span class="landing-feature-label">Your support insights</span></article>
+    </div>
+  </section>
+
+  <section class="landing-story landing-shell" id="story" aria-labelledby="story-title">
+    <div class="landing-story-heading">
+      <div>
+        <span class="landing-overline">SEE THE CUSTOMER EXPERIENCE</span>
+        <h2 id="story-title">From “I need help”<br>to “all sorted.”</h2>
+      </div>
+      <div class="landing-story-intro">
+        <p>Follow a customer’s delivery question from the help center to your team’s inbox. See how articles, ticket ownership, and replies work together in one everyday example.</p>
+        <span class="story-runtime"><span aria-hidden="true">▶</span> 40 seconds <span class="story-runtime-divider" aria-hidden="true">/</span> No sound needed</span>
+      </div>
+    </div>
+    <div class="story-player">
+      <div class="story-player-bar" aria-hidden="true"><span class="story-player-dots"><i></i><i></i><i></i></span><span>A day with AnswerLoop</span><span>01 — 07</span></div>
+      <video class="story-video" controls playsinline preload="none" width="1600" height="900"
+        poster="/media/answerloop-story-poster.jpg" aria-label="AnswerLoop: a better support day"
+        aria-describedby="story-description">
+        <source src="/media/answerloop-customer-story.mp4" type="video/mp4">
+        <track kind="captions" src="/media/answerloop-customer-story.en.vtt" srclang="en" label="English story captions">
+        Your browser does not support embedded video. <a href="/media/answerloop-customer-story.mp4">Download the 40-second story</a>.
+      </video>
+    </div>
+    <div class="landing-story-footer">
+      <p id="story-description">An illustrative story about Maya, a shopper, and Leo, her support agent at Sunday Studio.</p>
+      <div class="story-chapters" aria-label="Features shown"><span>Search</span><b aria-hidden="true">→</b><span>Support</span><b aria-hidden="true">→</b><span>Resolve</span><b aria-hidden="true">→</b><span>Learn</span></div>
+    </div>
+    <details class="story-transcript">
+      <summary>Read the story</summary>
+      <div>
+        <p><strong>The question.</strong> Maya’s order at Sunday Studio is already packed, but she has moved and needs to update her delivery address.</p>
+        <p><strong>Find an answer.</strong> She searches the public help center for “change delivery address.” A published guide explains what to do when an order is already packed.</p>
+        <p><strong>Ask for help.</strong> Maya sends a support request with her order number and receives a private ticket link by email.</p>
+        <p><strong>Work together.</strong> Leo takes ownership of the ticket. He checks with the warehouse and leaves an internal note for the team.</p>
+        <p><strong>Close the loop.</strong> Maya opens her secure email link and reads Leo’s reply: her address has been updated. She thanks him and the ticket is resolved.</p>
+        <p><strong>Learn and improve.</strong> The team publishes a clearer guide and reviews ticket and search activity to improve the next customer’s experience.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="landing-how" id="how" aria-labelledby="how-title">
+    <div class="landing-shell">
+      <div class="landing-how-top">
+        <div><span class="landing-overline">HOW IT WORKS</span><h2 id="how-title">One place for answers.<br>One flow for getting help.</h2></div>
+        <%= link_to "Set up your help desk ↗", new_registration_path, class: "landing-text-link" %>
+      </div>
+      <div class="landing-steps">
+        <div class="landing-step"><span>01</span><h3>Share what you know.</h3><p>Create your business workspace, invite your team, and publish answers to the questions you hear most.</p></div>
+        <div class="landing-step"><span>02</span><h3>Give customers a way in.</h3><p>Share your help center. Customers can find a guide or send a private support request when they need a person.</p></div>
+        <div class="landing-step"><span>03</span><h3>Follow through as a team.</h3><p>Assign requests, add internal notes, and reply to customers. Everyone can see what’s open and what’s resolved.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-about landing-shell" id="about" aria-labelledby="about-title">
+    <div class="landing-about-art" aria-hidden="true">
+      <span class="about-orbit orbit-one"></span><span class="about-orbit orbit-two"></span>
+      <span class="about-core"><span>answer<span>loop</span></span></span>
+      <span class="about-spark spark-one">✦</span><span class="about-spark spark-two">✦</span>
+    </div>
+    <div class="landing-about-copy">
+      <span class="landing-overline">ABOUT US</span>
+      <h2 id="about-title">Built for the people<br>behind the replies.</h2>
+      <p>Running a business means answering questions all day. AnswerLoop brings your help articles and customer conversations together, so your team has a clear place to start and customers know where to turn.</p>
+      <p>Whether you run an online store, a software business, or a service team, the goal is the same: make useful answers easier to find and personal help easier to manage.</p>
+      <%= link_to "Create your business workspace", new_registration_path, class: "landing-text-link" %>
+    </div>
+  </section>
+
+  <section class="landing-faq landing-shell" aria-labelledby="faq-title">
+    <div><span class="landing-overline">A FEW QUICK ANSWERS</span><h2 id="faq-title">A clear role in<br>your business.</h2><p>Your team provides the personal touch. AnswerLoop gives you the place to organize it.</p></div>
+    <div class="landing-faq-list">
+      <details><summary>What will my customers use?</summary><p>Your public help center. They can search and read your published guides, then send a support request if they need more help. A private email link lets them follow the conversation and reply.</p></details>
+      <details><summary>What will my team use?</summary><p>A shared workspace with help articles, a ticket inbox, and support insights. Team members can take ownership of requests, leave private notes, reply to customers, and track progress.</p></details>
+      <details><summary>What kind of business is this for?</summary><p>Small businesses and growing teams that answer recurring customer questions—whether that’s an online store, a software product, or a service business. Start with your common questions and the people who answer them.</p></details>
+    </div>
+  </section>
+
+  <section class="landing-contact" id="contact" aria-labelledby="contact-title">
+    <div class="landing-shell landing-contact-grid">
+      <div class="landing-contact-copy">
+        <span class="landing-overline">CONTACT</span>
+        <h2 id="contact-title">Make room for<br>better support.</h2>
+        <p>Have a question about using AnswerLoop for your business? Tell us how your team handles customer requests and what you want to improve.</p>
+        <div class="contact-detail"><span aria-hidden="true">↗</span><span>Fewer repeated answers. Clearer ownership.<br><strong>A calmer day for your team.</strong></span></div>
+      </div>
+      <div class="landing-contact-card">
+        <% if @contact_message.errors.any? %>
+          <div class="errors" role="alert">
+            <strong>Please check your message:</strong>
+            <ul><% @contact_message.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+          </div>
+        <% end %>
+        <%= form_with url: contact_path, scope: :contact_message, class: "contact-form" do |form| %>
+          <div class="contact-form-row">
+            <div class="field">
+              <%= form.label :name, "Your name" %>
+              <%= form.text_field :name, value: @contact_message.name, required: true, maxlength: 100, autocomplete: "name", placeholder: "Alex Morgan" %>
+            </div>
+            <div class="field">
+              <%= form.label :email, "Email address" %>
+              <%= form.email_field :email, value: @contact_message.email, required: true, maxlength: 254, autocomplete: "email", placeholder: "alex@example.com" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :message, "How can we help?" %>
+            <%= form.text_area :message, value: @contact_message.message, required: true, minlength: 10, maxlength: 2000, rows: 5, placeholder: "Tell us a little about your team or your question..." %>
+          </div>
+          <div class="contact-honeypot" aria-hidden="true">
+            <%= form.label :website, "Leave this field empty" %>
+            <%= form.text_field :website, tabindex: -1, autocomplete: "off" %>
+          </div>
+          <div class="contact-form-footer">
+            <%= form.submit "Send message", class: "button landing-primary" %>
+            <span>We’ll use your email only to reply.</span>
+          </div>
+        <% end %>
+        <% if Rails.env.development? %><p class="contact-demo-note">Demo mode: messages are saved locally and are not sent to an external inbox.</p><% end %>
+      </div>
+    </div>
+  </section>
+
+  <footer class="landing-footer">
+    <div class="landing-shell landing-footer-inner">
+      <div><span class="landing-footer-brand">Answer<span>Loop</span></span><p>Your help center. Your team’s support inbox.</p></div>
+      <nav aria-label="Footer navigation">
+        <%= link_to "Why AnswerLoop", root_path(anchor: "why") %>
+        <%= link_to "About", root_path(anchor: "about") %>
+        <%= link_to "Contact", root_path(anchor: "contact") %>
+        <%= link_to "Get started", new_registration_path %>
+      </nav>
+    </div>
+    <div class="landing-shell landing-footer-bottom">
+      <span>© <%= Time.current.year %> AnswerLoop</span><span>Built for teams that care about clarity.</span>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,8 @@
+<% content_for :title, "Workspaces · AnswerLoop" %>
+<div class="row"><h1>My workspaces</h1><%= link_to "Create workspace", new_workspace_path, class: "button" %></div>
+<div class="grid">
+  <% @workspaces.each do |workspace| %>
+    <section class="card"><h2><%= workspace.name %></h2><p class="tiny"><%= workspace.slug %></p><%= link_to "View workspace →", workspace_path(workspace.slug) %></section>
+  <% end %>
+</div>
+<% if @workspaces.empty? %><p class="muted">No workspaces yet.</p><% end %>

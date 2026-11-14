@@ -1,0 +1,23 @@
+<% content_for :title, "Dashboard · AnswerLoop" %>
+<section class="hero">
+  <span class="eyebrow">Your dashboard</span>
+  <h1>Make every answer count.</h1>
+  <p>Organize your team's knowledge and support workflows in one place.</p>
+</section>
+<div class="row" style="margin-bottom:18px">
+  <h2>My workspaces</h2>
+  <%= link_to "+ New workspace", new_workspace_path, class: "button" %>
+</div>
+<% if @workspaces.any? %>
+  <div class="grid">
+    <% @workspaces.each do |workspace| %>
+      <article class="card stack">
+        <div class="row"><h2><%= workspace.name %></h2><span class="badge"><%= current_user.memberships.find_by(workspace_id: workspace.id)&.role&.humanize %></span></div>
+        <p class="tiny">/<%= workspace.slug %></p>
+        <%= link_to "Open workspace →", workspace_path(workspace.slug) %>
+      </article>
+    <% end %>
+  </div>
+<% else %>
+  <section class="card narrow"><h2>Welcome to AnswerLoop</h2><p>Your first step is to create a workspace. You will become its owner.</p><%= link_to "Create workspace", new_workspace_path, class: "button" %></section>
+<% end %>

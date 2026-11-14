@@ -1,0 +1,16 @@
+<% content_for :title, "Create account · AnswerLoop" %>
+<section class="card narrow" style="margin:auto">
+  <span class="eyebrow">Get started</span>
+  <h2>Create your account</h2>
+  <p>Start building a knowledge space for your team.</p>
+  <% if @user.errors.any? %>
+    <div class="errors" role="alert"><strong>Please fix:</strong><ul><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div>
+  <% end %>
+  <%= form_with model: @user, url: registration_path do |form| %>
+    <div class="field"><%= form.label :email_address, "Work email" %><%= form.email_field :email_address, required: true, autocomplete: "email", autofocus: true %></div>
+    <div class="field"><%= form.label :password %><%= form.password_field :password, required: true, minlength: 12, autocomplete: "new-password" %><span class="tiny">Use at least 12 characters.</span></div>
+    <div class="field"><%= form.label :password_confirmation %><%= form.password_field :password_confirmation, required: true, minlength: 12, autocomplete: "new-password" %></div>
+    <%= form.submit "Create account", class: "button" %>
+  <% end %>
+  <p class="tiny">Already have an account? <%= link_to "Sign in", new_session_path %></p>
+</section>

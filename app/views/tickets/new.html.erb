@@ -1,0 +1,12 @@
+<% content_for :title, "New ticket · #{current_workspace.name}" %>
+<section class="hero"><span class="eyebrow">Support</span><h1>New ticket</h1><p>Create a request on behalf of a customer. They’ll receive a private link by email.</p></section>
+<section class="card narrow"><%= form_with url: workspace_tickets_path(current_workspace.slug), scope: :ticket do |form| %>
+  <% if @ticket.errors.any? %><div class="errors"><%= @ticket.errors.full_messages.to_sentence %></div><% end %>
+  <div class="field"><%= form.label :name, "Customer name" %><%= form.text_field :name, value: params.dig(:ticket, :name), required: true %></div>
+  <div class="field"><%= form.label :email, "Customer email" %><%= form.email_field :email, value: params.dig(:ticket, :email), required: true %></div>
+  <div class="field"><%= form.label :subject %><%= form.text_field :subject, value: @ticket.subject, required: true, maxlength: 180 %></div>
+  <div class="field"><%= form.label :body, "First reply" %><%= form.text_area :body, value: params.dig(:ticket, :body), required: true, rows: 6, maxlength: 20000 %></div>
+  <div class="field"><%= form.label :priority %><%= form.select :priority, Ticket.priorities.keys.map { |value| [value.humanize, value] } %></div>
+  <div class="field"><%= form.label :assignee_id, "Assign to" %><%= form.collection_select :assignee_id, current_workspace.memberships.includes(:user).where(role: %i[owner admin agent]).map(&:user), :id, :email_address, include_blank: "Unassigned" %></div>
+  <%= form.submit "Create ticket", class: "button" %> <%= link_to "Cancel", workspace_tickets_path(current_workspace.slug), class: "button secondary" %>
+<% end %></section>

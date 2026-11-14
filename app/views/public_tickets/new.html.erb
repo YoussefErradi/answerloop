@@ -1,0 +1,11 @@
+<% content_for :title, "Contact support · #{@workspace.name}" %>
+<section class="hero"><span class="eyebrow"><%= @workspace.name %> support</span><h1>Contact support</h1><p>Tell us what happened. We’ll email you a private link to follow the conversation.</p></section>
+<p><%= link_to "← Help center", help_path(@workspace.slug) %></p>
+<section class="card narrow"><%= form_with url: help_tickets_path(@workspace.slug), scope: :ticket do |form| %>
+  <% if @ticket.errors.any? %><div class="errors"><%= @ticket.errors.full_messages.to_sentence %></div><% end %>
+  <div class="field"><%= form.label :name, "Your name" %><%= form.text_field :name, value: params.dig(:ticket, :name), required: true, maxlength: 100, autocomplete: "name" %></div>
+  <div class="field"><%= form.label :email, "Email address" %><%= form.email_field :email, value: params.dig(:ticket, :email), required: true, autocomplete: "email" %></div>
+  <div class="field"><%= form.label :subject %><%= form.text_field :subject, value: @ticket.subject, required: true, maxlength: 180 %></div>
+  <div class="field"><%= form.label :body, "How can we help?" %><%= form.text_area :body, value: params.dig(:ticket, :body), rows: 7, required: true, maxlength: 20000 %></div>
+  <%= form.submit "Send request", class: "button" %>
+<% end %></section>

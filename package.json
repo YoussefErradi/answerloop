@@ -1,0 +1,8 @@
+{
+  "name": "answerloop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:js": "node --test test/javascript/*.test.js"
+  }
+}
